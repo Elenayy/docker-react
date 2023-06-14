@@ -1,0 +1,17 @@
+# specify the initial image
+FROM node:alpine
+
+#specify the work directory in the container
+WORKDIR '/app'
+
+#copy package.json file while contains all dependencies setting
+COPY package.json .
+
+#run mpm install to install the package in the container
+RUN npm install
+
+#copy the test files into container
+COPY . .
+
+#run the command
+CMD ["npm", "run", "start"]
